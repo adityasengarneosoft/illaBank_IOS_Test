@@ -39,17 +39,5 @@ class ListTitleTableViewCell: UITableViewCell {
                 debugPrint(errorLog.localizedDescription)
             }
         }
-        //        let fileUrl = URL(string: (objDashboard?.imageUser!)!)
-        //        ImageLoader.downloadImage(url: fileUrl!, completion: {
-        //                  (
-        //                      getimageViee,nil
-        //                  ) in
-        //                  DispatchQueue.main.async {
-        //                      self.imgUser.image = getimageViee
-        //                  }
-        //              })
-        
-        
-        
     }
 }
