@@ -2,7 +2,7 @@
 //  PostingViewController.swift
 //  IllhaTask
 //
-//  Created by A1502 on 23/08/21.
+//  Created by A1502 on 26/04/22.
 //
 
 import UIKit

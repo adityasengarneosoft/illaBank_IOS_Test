@@ -2,7 +2,7 @@
 //  PsotingTableViewCell1.swift
 //  IllhaTask
 //
-//  Created by A1502 on 23/08/21.
+//  Created by A1502 on 26/04/22.
 //
 
 import UIKit
@@ -27,17 +27,29 @@ class ListTitleTableViewCell: UITableViewCell {
     }
     func prepareLayout(objDashboard:countryList?) {
         lblTitle.text = objDashboard?.title
-        let fileUrl = URL(string: (objDashboard?.imageUser!)!)
-        ImageLoader.downloadImage(url: fileUrl!, completion: {
-                  (
-                      getimageViee,nil
-                  ) in
-                  DispatchQueue.main.async {
-                      self.imgUser.image = getimageViee
-                  }
-              })
-
-      
-
+        DispatchQueue.global(qos: .background).async {
+            do{
+                let data = try Data.init(contentsOf: URL.init(string:(objDashboard?.imageUser!)!)!)
+                DispatchQueue.main.async {
+                    let image: UIImage? = UIImage(data: data)
+                    self.imgUser.image = image
+                }
+            }
+            catch let errorLog {
+                debugPrint(errorLog.localizedDescription)
+            }
+        }
+        //        let fileUrl = URL(string: (objDashboard?.imageUser!)!)
+        //        ImageLoader.downloadImage(url: fileUrl!, completion: {
+        //                  (
+        //                      getimageViee,nil
+        //                  ) in
+        //                  DispatchQueue.main.async {
+        //                      self.imgUser.image = getimageViee
+        //                  }
+        //              })
+        
+        
+        
     }
 }
