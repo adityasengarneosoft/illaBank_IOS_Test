@@ -9,6 +9,7 @@ import UIKit
 
 class  ListViewController: UIViewController {
     
+    // MARK: Outlets
     @IBOutlet weak var pageControlNew: UIPageControl!
     @IBOutlet weak var imageCollection: UICollectionView!
     @IBOutlet weak var tblData: UITableView!
@@ -17,10 +18,14 @@ class  ListViewController: UIViewController {
     // MARK: Life Cycle Method
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
         self.listViewModelObj = ListViewModel()
         getDataFromFile()
     }
-    
+    // MARK: Custom Method Defination
     func setupPageControl(){
         tblData.separatorColor = UIColor.clear
         pageControlNew.currentPage = 0
@@ -30,9 +35,12 @@ class  ListViewController: UIViewController {
         pageControlNew.numberOfPages = pList?.imageHeader?.count ?? 0
         self.imageCollection.isPagingEnabled = true;
     }
-    
+    //Calls this function when the tap is recognized.
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
     func getDataFromFile() {
-        listViewModelObj?.loadProductsList(filename: "ListData", completion: { response in
+        listViewModelObj?.loadProductsList(completion: { response in
             if  self.listViewModelObj?.numberOfRows() == 0  {
                 
             } else {

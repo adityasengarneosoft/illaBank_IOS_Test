@@ -21,12 +21,10 @@ struct List: Codable {
 struct countryList: Codable {
     var id: Int?
     var title: String?
-    var countryDescription: String?
     var imageUser: String?
 
     enum CodingKeys: String, CodingKey {
         case id, title
-        case countryDescription = "description"
         case imageUser
     }
 }

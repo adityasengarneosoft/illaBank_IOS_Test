@@ -14,7 +14,7 @@ protocol ListViewModeleDelegate {
     func numberOfRows()->Int
     func productAtIndexPathImage(indexPath:IndexPath)->ImageHeader
     func productAtIndexPath(indexPath:IndexPath)->countryList
-    func loadProductsList(filename:String,completion:@escaping UserListReturnemptyCompletionHandler)
+    func loadProductsList(completion:@escaping UserListReturnemptyCompletionHandler)
     func loadSearchResult(updatedSerachText:String,completion:@escaping UserCoutrySearchReturnemptyCompletionHandler)
     func shuffleArrayCallBack(completion:@escaping shuffleArrayHandler)
 }
@@ -98,15 +98,15 @@ extension ListViewModel {
      * Parameters: completion handler
      * Return:  - Country list
      */
-    func loadProductsList(filename: String, completion: @escaping UserListReturnemptyCompletionHandler) {
-        readLocalFile(forName: filename, completion: { response in
+    func loadProductsList(completion: @escaping UserListReturnemptyCompletionHandler) {
+        readLocalFile(forName: "ListData", completion: { response in
             completion(response)
             
         })
     }
     func loadSearchResult(updatedSerachText: String, completion: @escaping UserCoutrySearchReturnemptyCompletionHandler) {
         pListSearchCountry?.removeAll()
-        pListSearchCountry = pListSearch?.countryList?.filter{ $0.title!.range(of: updatedSerachText, options: .caseInsensitive) != nil }
+        pListSearchCountry = pList?.countryList?.filter{ $0.title!.range(of: updatedSerachText, options: .caseInsensitive) != nil }
         pListSearch?.countryList? = pListSearchCountry!
         completion((pListSearch?.countryList)!)
     }

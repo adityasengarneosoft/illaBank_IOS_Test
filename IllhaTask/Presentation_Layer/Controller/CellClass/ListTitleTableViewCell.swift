@@ -17,7 +17,6 @@ class ListTitleTableViewCell: UITableViewCell {
         super.awakeFromNib()
         imgUser.layer.cornerRadius = 10
         imgUser.layer.masksToBounds = true
-        // Initialization code
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
