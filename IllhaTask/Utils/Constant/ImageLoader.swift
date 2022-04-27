@@ -15,7 +15,6 @@ extension NSError {
 fileprivate let imageCache = NSCache<NSString, UIImage>()
 class ImageLoader {
     //MARK: - Public
-    
     static func downloadData(url: URL, completion: @escaping (_ data: Data?, _  response: URLResponse?, _ error: Error?) -> Void) {
         URLSession(configuration: .ephemeral).dataTask(with: URLRequest(url: url)) { data, response, error in
             completion(data, response, error)

@@ -13,8 +13,6 @@ class ImageCollectionCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        
     }
     func prepareLayout(objDashboard:ImageHeader?) {
         let getImageUrl = objDashboard?.imagePath

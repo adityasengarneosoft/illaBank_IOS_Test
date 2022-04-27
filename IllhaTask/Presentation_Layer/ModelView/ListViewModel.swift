@@ -17,11 +17,9 @@ protocol ListViewModeleDelegate {
     func loadProductsList(filename:String,completion:@escaping UserListReturnemptyCompletionHandler)
     func loadSearchResult(updatedSerachText:String,completion:@escaping UserCoutrySearchReturnemptyCompletionHandler)
     func shuffleArrayCallBack(completion:@escaping shuffleArrayHandler)
-
-    
 }
 class ListViewModel : ListViewModeleDelegate {
-
+    
     func readLocalFile(forName name: String,completion: @escaping UserListReturnemptyCompletionHandler)  {
         do {
             if let bundlePath = Bundle.main.path(forResource: name,
@@ -51,7 +49,6 @@ class ListViewModel : ListViewModeleDelegate {
     }
 }
 extension ListViewModel {
-
     func shuffleArrayCallBack(completion: @escaping shuffleArrayHandler) {
         if isSearching{
             pListSearch?.countryList?.shuffle()
@@ -61,12 +58,10 @@ extension ListViewModel {
         completion(true)
     }
 }
-
 extension ListViewModel {
-    
     /*
      * Method name: numberOfRows
-     * Description: use to get products count
+     * Description: use to get Country count
      * Parameters: section
      * Return:  Int
      */
@@ -82,7 +77,7 @@ extension ListViewModel {
      * Method name: productAtIndexPath
      * Description: use to get product from particular index
      * Parameters: indexPath
-     * Return:  Product
+     * Return:  Index
      */
     func productAtIndexPath(indexPath:IndexPath)->countryList {
         if isSearching{
@@ -98,10 +93,10 @@ extension ListViewModel {
 }
 extension ListViewModel {
     /*
-     * Method name: loadProductsList
-     * Description: use to get product from api
+     * Method name: load Country List
+     * Description: use to get product from Local json file
      * Parameters: completion handler
-     * Return:  -
+     * Return:  - Country list
      */
     func loadProductsList(filename: String, completion: @escaping UserListReturnemptyCompletionHandler) {
         readLocalFile(forName: filename, completion: { response in
@@ -115,7 +110,5 @@ extension ListViewModel {
         pListSearch?.countryList? = pListSearchCountry!
         completion((pListSearch?.countryList)!)
     }
-    
-    
 }
 

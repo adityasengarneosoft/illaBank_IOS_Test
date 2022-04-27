@@ -19,7 +19,6 @@ extension ListViewController:  UITableViewDataSource, UITableViewDelegate {
             return pList?.countryList?.count ?? 0
             
         }
-        
     }
     // create a cell for each table view row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

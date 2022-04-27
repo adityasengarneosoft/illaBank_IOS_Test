@@ -19,8 +19,8 @@ class  ListViewController: UIViewController {
         super.viewDidLoad()
         self.listViewModelObj = ListViewModel()
         getDataFromFile()
-        
     }
+    
     func setupPageControl(){
         tblData.separatorColor = UIColor.clear
         pageControlNew.currentPage = 0
@@ -29,7 +29,6 @@ class  ListViewController: UIViewController {
         pageControlNew.currentPageIndicatorTintColor = UIColor.green
         pageControlNew.numberOfPages = pList?.imageHeader?.count ?? 0
         self.imageCollection.isPagingEnabled = true;
-        
     }
     
     func getDataFromFile() {
